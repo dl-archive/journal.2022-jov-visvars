@@ -1,0 +1,65 @@
+
+\centering
+\small
+\noindent%
+\renewcommand{\arraystretch}{1.25}
+\rowcolors{2}{white}{gray!15}%
+\setlength{\tabcolsep}{1pt}%
+\setlength{\aboverulesep}{14pt}%
+\setlength{\belowrulesep}{14pt}% 
+\setlength{\arrayrulewidth}{0.5pt}%
+\begin{tabular}{r | c !{\tls} %
+  c !{\tls} c !{\tls} c !{\tls} c !{\tls} c !{\tls} %
+  c !{\tls} c !{\tls} c !{\tls} c !{\tls} c !{\tls} %
+  c !{\tls} c !{\tls} c !{\tls} c !{\tls} c !{\tls} %
+  c !{\tls} c !{\tls} c !{\tls} c !{\tls} c !{\tls} %
+  c}
+    \rott{\strut \hspace{9.5em}} %
+  & \rott{\strut Area} 
+  & \rott{\strut Color} 
+  & \rott{\strut Height} 
+  & \rott{\strut Transparency} 
+  & \rott{\strut Light Emission} 
+  & \rott{\strut Stacking}  
+  & \rott{\strut Stacking (global layer)} 
+  & \rott{\strut Segments} 
+  & \rott{\strut Shape Type} 
+  & \rott{\strut Shape Parameter} 
+  & \rott{\strut In-situ} 
+  & \rott{\strut Contour Width} 
+  & \rott{\strut Contour Color} 
+  & \rott{\strut Stippling} 
+  & \rott{\strut Sketchy Contour} 
+  & \rott{\strut Pattern} 
+  & \rott{\strut Noise} 
+  & \rott{\strut Shading} 
+  & \rott{\strut Hatching} 
+  & \rott{\strut Nesting-Level Margin} 
+  & \rott{\strut Color Weaving} 
+  & \rott{\strut Height Threshold} 
+  \\\hline
+  Area (Foot Print, Size) & --  &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &    \\
+  Color                   & \OK & --  &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &    \\
+  Height                  & \OK & \OK & --  &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &    \\
+  Transparency            & \OK & \pa & \OK & --  &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &    \\
+  Light Emission (Glow)   & \OK & \pa & \OK & \pa & --  &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &    \\
+  Stacking                & \OK & \OK & \OK & \OK & \OK & --  &     &     &     &     &     &     &     &     &     &     &     &     &     &     &     &    \\
+  Stacking (global layer) & \OK & \OK & \OK & \OK & \OK &     & --  &     &     &     &     &     &     &     &     &     &     &     &     &     &     &    \\
+  Segments                & \OK & \OK & \OK & \OK & \OK & \OK & \OK & --  &     &     &     &     &     &     &     &     &     &     &     &     &     &    \\
+  Shape Type              & \OK & \OK & \OK & \OK & \pa & \pa & \pa & \pa & --  &     &     &     &     &     &     &     &     &     &     &     &     &    \\
+  Shape Parameter         & \OK & \OK & \OK & \OK & \OK & \pa & \pa & \pa &     & --  &     &     &     &     &     &     &     &     &     &     &     &    \\
+  In-situ (Change, Diff)  & \OK & \OK & \OK & \OK & \OK &     &     & \pa & \pa & \pa & --  &     &     &     &     &     &     &     &     &     &     &    \\
+  Contour Width           & \OK & \OK & \OK & \pa & \pa & \OK & \OK & \pa & \pa & \pa & \pa & --  &     &     &     &     &     &     &     &     &     &    \\
+  Contour Color           & \OK & \pa & \OK & \pa & \pa & \OK & \OK & \OK & \pa & \pa & \pa & \OK & --  &     &     &     &     &     &     &     &     &    \\
+  (Contour) Stippling     & \OK & \pa & \OK & \pa & \pa & \OK & \OK & \pa & \pa & \pa & \pa & \OK & \OK & --  &     &     &     &     &     &     &     &    \\
+  Sketchy Contour         & \OK & \OK & \OK & \pa & \pa & \OK & \OK & \pa & \pa & \pa & \pa & \OK & \pa & \pa & --  &     &     &     &     &     &     &    \\
+  Surface Pattern         & \OK & \OK & \OK & \pa & \pa & \OK & \OK & \OK & \OK & \OK & \pa & \OK & \OK & \pa & \pa & --  &     &     &     &     &     &    \\
+  Surface Noise           & \OK & \OK & \OK & \pa & \pa & \OK & \OK & \OK & \OK & \OK & \pa & \OK & \OK & \pa & \pa &     & --  &     &     &     &     &    \\
+  Surface Shading         & \OK & \OK & \OK & \pa & \pa & \OK & \OK & \pa & \OK & \OK & \pa & \OK & \OK & \OK & \pa & \pa & \pa & --  &     &     &     &    \\
+  (Surface) Hatching      & \OK & \OK & \OK & \pa & \pa & \OK & \OK & \OK & \OK & \OK & \pa & \OK & \OK & \pa & \OK &     &     &     & --  &     &     &    \\
+  Nesting-Level Margin    & \OK & \pa & \OK & \pa & \pa & \OK & \OK &     & \pa &     &     &     &     &     &     & \OK & \OK & \OK & \OK & --  &     &    \\
+  Color Weaving           & \OK & \pa & \OK & \pa & \pa & \pa & \OK & \OK & \OK & \OK & \pa & \pa & \pa & \pa & \pa & \pa &     &     &     & \pa & --  &    \\
+  Height Threshold        & \OK & \OK & \OK & \pa & \OK &     &     &     & \pa & \pa & \pa & \OK & \OK & \OK & \pa & \OK & \OK & \OK & \OK &     & \OK & -- \\
+  \hline
+\end{tabular}%
+

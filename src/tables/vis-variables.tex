@@ -1,0 +1,48 @@
+
+\begin{table*}[h]
+  \centering
+  \noindent%
+  \renewcommand{\arraystretch}{1.25}
+  \rowcolors{3}{white}{gray!15}%
+  \setlength{\tabcolsep}{6pt}%
+  \setlength{\aboverulesep}{14pt}%
+  \setlength{\belowrulesep}{14pt}% 
+  \setlength{\arrayrulewidth}{0.5pt}%
+    \begin{tabular}{ r | c | c !{\tls} c | c !{\tls} c | c !{\tls} c !{\tls} c !{\tls} c }
+      \multicolumn{1}{ c|}{\hspace{26mm}\textbf{Visual Variable}} & 
+      \multicolumn{1}{ c|}{}     & 
+      \multicolumn{2}{ c|}{Node}      & 
+      \multicolumn{2}{ c|}{Dim.}      &
+      \multicolumn{4}{ c }{Data Type} \\
+      \rott{\strut \hspace{5em}} %
+            &  \rott{\strut Stage} & \rott{\strut Inner Node} & \rott{\strut Leaf Node} 
+            &  \rott{\strut 2D} & \rott{\strut 2.5D}  
+            &  \rott{\strut Nominal} & \rott{\strut Ordinal} & \rott{\strut Interval} & \rott{\strut Ratio} \\\hline
+      Area (Foot Print, Size)   & M   &   \OK & \OK &   \OK & \OK &       & \OK & \pa & \OK \\
+      Color                     & R   &   \OK & \OK &   \OK & \OK &   \OK & \OK & \OK & \OK \\
+      Height                    & M   &   \pa & \OK &       & \OK &       & \pa & \pa & \OK \\
+      Transparency              & R   &   \pa & \OK &       & \OK &   \pa & \pa & \pa & \OK \\
+      Light Emission (Glow)     & R   &   \pa & \OK &   \pa & \OK &       & \pa & \pa & \OK \\
+      Stacking                  & M   &       & \OK &   \OK & \OK &   \OK &     & \pa & \OK \\
+      Stacking (global layer)   & M   &   \pa & \OK &       & \OK &       & \pa & \pa & \OK \\
+      Segments                  & M   &   \pa & \OK &   \OK & \OK &   \OK & \pa & \pa & \OK \\
+      Shape Type                & M   &       & \OK &   \OK & \OK &   \OK & \pa &     &     \\
+      Shape Parameter           & M   &   \pa & \OK &   \OK & \OK &       & \pa & \pa & \OK \\
+      In-situ (Change, Diff)    & M   &       & \OK &   \OK & \OK &       & \OK &     &     \\
+      Contour Width             & R   &   \OK & \OK &   \OK & \OK &       & \OK & \pa & \pa \\
+      Contour Color             & R   &   \OK & \OK &   \OK & \OK &   \OK & \OK & \OK & \OK \\
+      (Contour) Stippling       & R   &   \OK & \OK &   \OK & \OK &   \OK & \OK & \pa & \pa \\
+      Sketchy Contour           & R   &   \OK & \OK &   \OK & \OK &   \pa & \OK & \pa & \pa \\
+      Surface Pattern (Texture) & R   &   \pa & \OK &   \OK & \OK &   \OK & \OK & \pa & \pa \\
+      Surface Noise (Texture)   & R   &   \pa & \OK &   \OK & \OK &   \pa & \OK & \pa & \OK \\
+      Surface Shading (Texture) & R   &   \OK & \OK &   \pa & \OK &   \pa & \OK & \OK &     \\
+      (Surface) Hatching        & R   &   \OK & \OK &   \OK & \OK &   \pa & \OK & \pa & \pa \\
+      Nesting-Level Margin      & R   &   \OK &     &   \OK & \OK &       & \OK & \pa & \OK \\
+      Color Weaving             & R   &   \OK & \OK &   \OK & \OK &   \OK & \pa &     &     \\
+      Height Threshold          & R   &   \OK & \OK &   \OK & \OK &       & \pa & \pa & \OK \\\hline
+  \end{tabular}%
+  \caption{Legend: %
+    M -- Mapping\enspace{}|\enspace{}R -- Rendering\enspace{}|\enspace{}\OK{} -- Supported\enspace{}|\enspace{}\pa{} -- Partially Supported %
+  }
+  \label{tab:overview-basic}%
+\end{table*}%
