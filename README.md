@@ -32,11 +32,23 @@ DOI: [10.1007/s12650-022-00868-1](https://doi.org/10.1007/s12650-022-00868-1) (o
 The manuscript was compiled on Overleaf in 2022 with TeX Live 2021 (pdfTeX 1.40.23 for the revision of May 2022), hence the TeX Live 2021 container.
 The sources use `\tikzexternalize`, so `build.sh` runs `pdflatex -shell-escape` on a scratch copy of `src/`.
 `build.sh` pins `\today` (used in the "Received" line) to 2022-07-11, the day the final files were uploaded.
-Text and content match the version of record; the published article was typeset and copy-edited by Springer (layout, quotes, abbreviations, keywords, received/accepted dates).
+On `main`, the build produces the revised version (`v1.1-revised`); check out `v1.0-camera-ready` for the accepted manuscript.
+Text and content of `v1.0-camera-ready` match the version of record; the published article was typeset and copy-edited by Springer (layout, quotes, abbreviations, keywords, received/accepted dates).
 
 ## Versions
 
 - [`v1.0-camera-ready`](https://github.com/dl-archive/journal.2022-jov-visvars/tree/v1.0-camera-ready) – sources of the accepted manuscript as sent to Springer (July 2022)
+- [`v1.1-revised`](https://github.com/dl-archive/journal.2022-jov-visvars/tree/v1.1-revised) – author's revised version (2026-11-10): citation, grammar and typo fixes, see [Revisions](#revisions)
+
+## Revisions
+
+`v1.1-revised` (2026-11-10) corrects errors in the accepted manuscript without changing its content or layout.
+Every page carries the note "Author's revised version (2026-11-10). Version of record: https://doi.org/10.1007/s12650-022-00868-1".
+
+- Header: "Received: February 2, 2022 / Accepted: July 4, 2022" (was the template placeholder "Received: \today / Accepted: tbd").
+- Citations: five parenthetical citations were typeset as textual ones ("polygonal partitions de Berg et al. (2013)" → "(de Berg et al., 2013)"; likewise Liang et al. 2015, Wang et al. 2022, Pfahler et al. 2020, Atzberger et al. 2021).
+- Typos: "unselected nodes" (was "notes"), "GitHub", "Area (Footprint, Size)" in Table 1.
+- Grammar and word choice: "match those of", "tens of thousands", "domain- and application-specific", "allows deriving", "filtering outliers", "Packing layouts", "An example of an adjacency layout", "point of view", "as a secondary visual variable", "requires the visual comparison", "in combination with others", "as well as extruded", "superimposed onto", "physically based materials" (2×), "allows encoding", "on top of the platforms", "as a visual variable", "Two examples of", "hierarchically structured".
 
 ## Citation
 

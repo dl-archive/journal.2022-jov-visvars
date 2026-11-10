@@ -77,6 +77,9 @@
 	\vspace{-0.8\baselineskip}%
 \end{wrapfigure}}
 
+\usepackage{eso-pic}
+\AddToShipoutPictureFG{\AtPageLowerLeft{\put(\LenToUnit{0.5\paperwidth},\LenToUnit{6mm}){\makebox[0pt][c]{\fontsize{6.5}{8}\selectfont\color{gray}Author's revised version (2026-11-10). Version of record: https://doi.org/10.1007/s12650-022-00868-1}}}}
+
 \begin{document}
 
 \title{Visual Variables and Configuration of Software Maps}
@@ -98,7 +101,7 @@ J{\"u}rgen D{\"o}llner, \email{juergen.doellner@hpi.uni-potsdam.de}\\
 Matthias Trapp, \email{matthias.trapp@hpi.uni-potsdam.de}
 }
 
-\date{Received: \today~/~Accepted: \emph{tbd}}
+\date{Received: February 2, 2022~/~Accepted: July 4, 2022}
 
 \maketitle
 
@@ -212,7 +215,7 @@ Since the reference space is still in $\mathcal{R}^2$, we support the terms \emp
 
 With the attribute space and reference space being constrained, the typical characteristics of $\mathcal{A}^2\otimes\mathcal{R}^2$ and $\mathcal{A}^3\otimes\mathcal{R}^2$ visualizations adhere to software maps.
 Consequently, we define software maps as a subset of 2D and 2.5D containment treemaps---with some exceptions being implicit edge representation trees---for the targeted mapping of abstract software system data and software engineering data as well as software development data.
-This gives one outstanding benefit: their characteristics largely match these of ubiquitously available, interactive 2D and 2.5D (geo-spatial) maps.
+This gives one outstanding benefit: their characteristics largely match those of ubiquitously available, interactive 2D and 2.5D (geo-spatial) maps.
 Furthermore, with this definition of software maps, both visualization engineers and software engineers can rely on and build upon familiar (1) interaction metaphors, (2) provisioning strategies, and (3) visualization metaphors, drawing on their habits and experiences.
 
 \subsection{Data Characteristics}
@@ -253,7 +256,7 @@ This paper does not cover city visualizations or city-like metaphors~\citep{knig
     \caption{%
         A software map depicting the source code of the Qt 5.2.1 release in 2014. 
         The map contains over \numprint{145000} leaf nodes and covers most dependencies such as sqlite3 and assimp. 
-        The software data was extracted from the Github mirror \href{https://github.com/qt/qt5}{github.com/qt/qt5} with resolved submodules.}
+        The software data was extracted from the GitHub mirror \href{https://github.com/qt/qt5}{github.com/qt/qt5} with resolved submodules.}
     \label{fig:qt-software-map}
 \end{figure}
 As one example of a software project, the Qt 5.2.1 release from February 2014 concluded over 19 years of development from over \numprint{1400} developers that created more than \numprint{120000} commits.
@@ -264,21 +267,21 @@ Much of the source code is present in today's software through dependency on sof
 This is important to keep in mind when exploring metrics using software maps.
 Software maps and, generally, most depictions based on a software's underlying hierarchy or structure tend to obfuscate a software's overall complexity since they only cover its top-most layer. 
 The dependency tree of an NPM package, for example, has an average depth of 4.39 and a size of 86.55~\citep{vaidya2019-npm-security}.
-This quickly results in the tenth of thousands of additional source and configuration files (i.e., located in the node\_modules directory) that are usually not incorporated in the software analysis.
+This quickly results in tens of thousands of additional source and configuration files (i.e., located in the node\_modules directory) that are usually not incorporated in the software analysis.
 
 Whether it is more or less adequate to focus on a slice of software or cover all of it depends on the task and needs to be researched in more detail.
 Extending the idea of software maps to a \emph{Google-Earth}-like service to explore millions of software projects as a landscape, planet, or galaxy is tempting.
 From an implementation perspective, available frameworks and tools need to scale to large and massive datasets.
 This includes preprocessing and layouting~\citep{scheibel2021-hilbertmooreperformance}, hardware-accelerated rendering, and dynamic updates of the geometry~\citep{trapp2013-gputreemaps,scheibel2016-avcs}.
-Similarly, the deployment and provisioning of data and visualization are domain and application-specific~\citep{limberger2013-interactive,limberger2016-declarative3d}.
-However, a generalized view of application scenarios allows to derive common characteristics and shared approaches for visualization, including visualization services~\citep{scheibel2020-modular-hiviser}.
+Similarly, the deployment and provisioning of data and visualization are domain- and application-specific~\citep{limberger2013-interactive,limberger2016-declarative3d}.
+However, a generalized view of application scenarios allows deriving common characteristics and shared approaches for visualization, including visualization services~\citep{scheibel2020-modular-hiviser}.
 Based on these techniques, the foundations for a scalable and much more comprehensive exploration already exist.
 For the following techniques in the phases of preprocessing, layouting, mapping, and rendering, implementations should focus on scalability.
 
 \section{Preprocessing and Filtering}
 \label{JOV:Sec:Preprocessing}
 The incoming data, also known as the problem or task data, is transformed and prepared for visualization during preprocessing and filtering.
-This includes resampling, normalization, filtering outlier, and accumulating weighted leaf-node data to inner nodes.
+This includes resampling, normalization, filtering outliers, and accumulating weighted leaf-node data to inner nodes.
 The main goal is to prepare use-case-specific data augmentation, value resolution, and data residence.
 The latter two are essential for visualization systems that process large amounts of data.
 
@@ -348,7 +351,7 @@ This hierarchical structure is processed by treemap layout algorithms, resulting
 There are many algorithms available and under current research~\citep{scheibel2020-treemap-layout-algorithms}.
 From them, mainly two-dimensional layouts are used for both 2D and 2.5D software maps.
 As a prominent classification, \enquote{one can discern two major layout methodologies: \emph{subdivision} and \emph{packing}}~\citep{schulz2011-implicit}.
-\emph{Packaging layouts} use a spatial arrangement of child nodes based on proximity and the definition of an enclosing space as a separate layout.
+\emph{Packing layouts} use a spatial arrangement of child nodes based on proximity and the definition of an enclosing space as a separate layout.
 \emph{Splitting layouts}, in contrast, define a space for the root node and dissect its layout for all of its child nodes.
 Another approach to differentiation is the class of shapes and metaphor for hierarchical nesting that an algorithm selects for the nodes.
 We see the coarse categories of rectangular splitting layouts, rectangular packing layouts, polygonal layouts, and adjacency layouts for software maps.
@@ -389,8 +392,8 @@ If this whitespace should be reduced, layout postprocessing can be used~\citep{d
 Next to rectangular layouts, software maps may be constructed using general polygonal layouts.
 Mainly splitting algorithms are used to derive polygonal layouts, although they are not limited to this.
 For example, software maps with convex shapes can be constructed using Voronoi tessellation, creating Voronoi treemaps~\citep{balzer2005-voronoi}.
-Another approach is space partitioning, which is used with polygonal partitions~\cite{deBerg2013-polygonal} or a divide-and-conquer approach~\cite{liang2015-variousshapes}.
-The Voronoi variants can be used to derive orthogonal Voronoi treemaps~\cite{wang2022-orthogonalvoronoi}---using non-convex orthogonal shapes---or build upon the layout to derive map-like visualizations, e.g., the CodeSurveyor~\citep{hawes2015-codesurveyor}.
+Another approach is space partitioning, which is used with polygonal partitions~\citep{deBerg2013-polygonal} or a divide-and-conquer approach~\citep{liang2015-variousshapes}.
+The Voronoi variants can be used to derive orthogonal Voronoi treemaps~\citep{wang2022-orthogonalvoronoi}---using non-convex orthogonal shapes---or build upon the layout to derive map-like visualizations, e.g., the CodeSurveyor~\citep{hawes2015-codesurveyor}.
 When following the approach of space-filling curves for non-rectangular layouts, the Gosper curve can be used to create GosperMaps, which are especially stable over time~\citep{auber2013-gospermap}.
 
 \subsection{Adjacency Layouts}
@@ -400,7 +403,7 @@ When following the approach of space-filling curves for non-rectangular layouts,
             {\includegraphics[width = \textwidth, clip, trim = 0 0 0 192]{figures/_sunburst_25d}};
     \end{tikzpicture}
     \caption{%
-        An example for a adjacency layout for treemaps: a Sunburst view depicting a software system.}
+        An example of an adjacency layout for treemaps: a Sunburst view depicting a software system.}
     \label{fig:sunburst}
 \end{figure*}
 A prominent extension of software maps is adjacency layouts (\autoref{fig:sunburst}).
@@ -416,7 +419,7 @@ One of the biggest challenges for software maps is stability over time, i.e., no
 This is advantageous for the visual-data-correspondence~\citep{kindlmann2014-algebraic} and for maintaining a mental map~\citep{archambault2011-mentalmap}.
 Stability is achieved by maintaining topology changes and weight changes of the underlying hierarchy.
 Suppose the time range of interest is in the past. 
-In that case, a multi-revision hierarchy can be computed~\citep{tu2007-changes}, allowing for stable positions of nodes as they can be pre-determined using a layout that incorporates all nodes with their maximum weight~\cite{pfahler2020-evolving}.
+In that case, a multi-revision hierarchy can be computed~\citep{tu2007-changes}, allowing for stable positions of nodes as they can be pre-determined using a layout that incorporates all nodes with their maximum weight~\citep{pfahler2020-evolving}.
 Suppose the software map is used to visualize ongoing processes and continuously evolving data. In that case, an initial layout can be incrementally evolved based on the topology changes, resulting in nodes growing, shrinking, appearing, and disappearing~\citep{scheibel2018-evocells}.
 Moreover, \cite{kokash2014-templatebased} proposed an approach that ensures uniform treemap layouts over time by applying an explicit splitting scheme.
 A similar approach is \emph{the layout of the treemap using only local modifications}~\citep{sondag2017-stabletreemaps} by applying local swaps and approximating the layout of the previous instance.
@@ -427,7 +430,7 @@ As an improvement to this, the Greedy Insertion approach operates on the derived
 The mapping stage transforms pre-processed and filtered data, e.g., attribute values, into depictable and reversibly encoded graphical primitives and scenes.
 This is a fundamental step for efficient encoding of input data and should address human capacities and abilities to decode a depiction~\citep{ware2012-information}.
 There is not necessarily an explicit representation of the resulting visualization object in memory.
-The result may only be volatile during visualization, especially from an implementation point-of-view: the distinction between mapping and rendering sustains more on a conceptual level~\citep{trapp2013-gputreemaps,scheibel2016-avcs}. 
+The result may only be volatile during visualization, especially from an implementation point of view: the distinction between mapping and rendering sustains more on a conceptual level~\citep{trapp2013-gputreemaps,scheibel2016-avcs}. 
 In this section, visual variables and additional techniques available for attribute mapping are briefly described and discussed. 
 An overview of visual variables (not techniques in general) is provided and summarized in \autoref{tab:overview-basic}. 
 In it, each visual variable is classified with respect to the stage typically responsible as well as its applicability to (1) inner nodes and leaf nodes, (2) 2D and 2.5D software maps, and (3) the data type it most certainly can convey.
@@ -436,7 +439,7 @@ In it, each visual variable is classified with respect to the stage typically re
 
 \subsection{Use of Height}
 \WrapFigRightRaised{figures/_swmap-using-height-cropped}{Using height as a visual variable by extruding the 2D shapes up (2.5D).}{fig:heightusage}
-We utilize the height of cuboids by extrusion of the 2D shape~\citep{bladh2004-threedimensions,choi2011-stratatreemaps} as secondary visual variable (\autoref{fig:heightusage}).
+We utilize the height of cuboids by extrusion of the 2D shape~\citep{bladh2004-threedimensions,choi2011-stratatreemaps} as a secondary visual variable (\autoref{fig:heightusage}).
 The idea is to convey information in the order of decreasing importance for the task: (1) color, (2) height, and (3) other visual variables.
 For 2.5D software maps, pyramid-like shapes can be used to further encode an attribute or reduce occlusion~\citep{turo1992-improve}.
 When depicting evolving data with accustomed map themes, height seems to allow for an intuitive encoding of data changes by means of growing or increasing vs. shrinking or decreasing, respectively.
@@ -477,7 +480,7 @@ Another technique to combine aggregated and detailed views with reduced occlusio
 	\label{fig:insitu-templates}
 \end{figure*}
 Many software map themes are designed to facilitate understanding of the evolution of the underlying data sets (\autoref{fig:insitu}).
-This eventually requires for visual comparison of (1) multiple visual variables for (2) multiple points in time over (3) large time ranges.
+This eventually requires the visual comparison of (1) multiple visual variables for (2) multiple points in time over (3) large time ranges.
 Therefore, \cite{tu2007-changes} introduced contrast treemaps.
 Their approach could be applied within visual software analytics by encoding two different states of the attribute mapped to area and color.
 This idea was extended by in-situ templates~\citep{limberger2019-insitu}, which allow for the visual encoding of former and latter states on a per-cuboid basis for rectangular 2.5D software maps~(\cf~\autoref{fig:insitu-templates}).
@@ -486,14 +489,14 @@ Although not discussed in the paper, the templates allow for the comparison of a
 The visual quality and expressiveness thereby depend on the available rendering techniques, e.g., procedural texturing and transparency are accounted for by several templates~\citep{limberger2021-procedural-textures}.
 
 In practice, most comparison templates would result in a complex mapping and should be used for complex tasks or expert systems only.
-For example, depicting area changes in combinations with others is challenging to perceive.
+For example, depicting area changes in combination with others is challenging to perceive.
 However, they allow for a convenient encoding of changes in height that are usually mapped from secondary information such as the number of authors or the size of domain logic.
 Another use is to depict changes in color for preliminary information, i.e., the most prominent indicator for the primary purpose of the map theme, such as the maintainability or faultiness of a software module.
 
 \subsection{Depicting Relations}
 \WrapFigRightRaised{figures/_vv-relations}{Modules included by another module are connected using directed tubes (textured with procedurally generated arrows) in 3D.}{fig:relations}
-For an emphasis on the topology with respect to the nested structure of nodes, cushion shading~\citep{vanwijk1999-cushion} or hierarchical stippling~\citep{sondag2020-uncertainty}, variations of margins or padding, as well extruded, stacked inner nodes~\citep{bladh2004-threedimensions} can be applied.
-If other relations (e.g., \autoref{fig:relations}) of nodes in addition to their tree-structured topology are of interest (e.g., functional dependencies or often-coinciding changes during the development process), edges or edge bundles can be superimposed to software maps~\citep{holten2006-edgebundles,steinbeck2019-evostreets}.
+For an emphasis on the topology with respect to the nested structure of nodes, cushion shading~\citep{vanwijk1999-cushion} or hierarchical stippling~\citep{sondag2020-uncertainty}, variations of margins or padding, as well as extruded, stacked inner nodes~\citep{bladh2004-threedimensions} can be applied.
+If other relations (e.g., \autoref{fig:relations}) of nodes in addition to their tree-structured topology are of interest (e.g., functional dependencies or often-coinciding changes during the development process), edges or edge bundles can be superimposed onto software maps~\citep{holten2006-edgebundles,steinbeck2019-evostreets}.
 This approach, however, is visually constrained by the number of depicted relations and data set size.
 Superimposing relations using tubes on top of 2.5D treemaps introduces additional clutter and visual complexity not inherent to the treemap metaphor.
 
@@ -508,7 +511,7 @@ As a result of the rendering stage, the mapped attributes should be visually enc
 Different texture patterns can be applied to encode categorical data~\citep{molli2001-multisynchronous} (\autoref{fig:textures}).
 Exemplary attributes for texture pattern mapping are (the abstract) file type (e.g., source code, documentation, deployment), associated teams, or budgets.
 Alternatively, texture intensity was suggested as a visual variable for scales with a natural zero~\citep{holten2005-realism}.
-With most modern rendering engines supporting physical-based materials, textures can be used to enable visual variables based on their metalness or roughness (see natural metaphors).
+With most modern rendering engines supporting physically based materials, textures can be used to enable visual variables based on their metalness or roughness (see natural metaphors).
 In the past, we predominantly used procedural textures to depict quality measures (e.g., degree of documentation, error-proneness), complexity measures (incoming or outgoing dependencies, mixed-use of third-party dependencies), and development process indicators (e.g., number of authors). 
 Procedural texturing can further be used to superimpose rulers or stripes, making the height effectively countable and increasing the accuracy of comparability.
 Another approach is to use procedural textures to encode underlying data distributions~\citep{limberger2020-uncertainty}.
@@ -527,12 +530,12 @@ For the visual display of uncertainty, fuzzy drawing styles can be applied.
 For example, node contour width, as well as multiplexed frequency and amplitude, could be parameterized~\citep{gortler2017-bubbletreemaps} and used to indicate vagueness.
 In addition, pencil-like outlines and hatching of surfaces can be combined into a single visual variable, i.e., \emph{sketchiness}.
 Mapping data to sketchiness is instrumental in encoding \enquote{uncertainty, imprecision, or vagueness}~\citep{limberger2016-sketchy}.
-It allows to encode varying degrees of uncertainty and can be used in addition to color (\autoref{fig:sketchiness}).
+It allows encoding varying degrees of uncertainty and can be used in addition to color (\autoref{fig:sketchiness}).
 For example, it can display measurement inaccuracies (incomplete or estimated data) or target data that is yet to be discussed or implemented (i.e., targets for complexity, coverage, performance, or other quality measures).
 
 \subsection{Utilizing Transparency}
 \WrapFigRightRaised[-2.0]{figures/_vv-transparency-v2}{Transparency (stochastic) as a visual variable in 2.5D.}{fig:transparency}
-Regarding geometric processing of inner nodes, some approaches extrude the layout as well, creating platforms~\citep{andrews1995-informationlandscapes} or pyramid frustums~\citep{andrews2002-informationpyramids}, and placing child nodes \emph{on top} on the platforms.
+Regarding geometric processing of inner nodes, some approaches extrude the layout as well, creating platforms~\citep{andrews1995-informationlandscapes} or pyramid frustums~\citep{andrews2002-informationpyramids}, and placing child nodes \emph{on top} of the platforms.
 Instead of stacking, there are approaches for nested depiction as well, e.g., full spheres~\citep{balzer2004-softwarelandscapes} and hemispheres~\citep{balzer2004-largesoftware} in combination with transparency.
 Other uses of transparency are (1) to reduce occlusion and (2) to encode different node states~\citep{luboschik2008-discovering}.
 Transparency can further be used to depict removed or planned components, goals, and irrelevant nodes or enhance the expressiveness and quality of texturing (\autoref{fig:transparency}).
@@ -551,14 +554,14 @@ Aggregation can further extend user control and interaction, e.g., folding and u
 
 \subsection{Height-based Filtering}
 \WrapFigRightRaised{figures/_vv-ref-surface}{Reference surface for height-based filtering in 2.5D.}{fig:referencesurface}
-For 2.5D software maps, a reference surface, a height reference~(\autoref{fig:referencesurface}) can be used to \enquote{facilitate accurate identification of highest nodes as well as similar nodes~[\ldots]. Furthermore, it allows filtering and selection of nodes based on their height and depicts filtered and unselected notes in a clean way without introducing additional visual clutter}~\citep{limberger2018-filtering}.
+For 2.5D software maps, a reference surface, a height reference~(\autoref{fig:referencesurface}) can be used to \enquote{facilitate accurate identification of highest nodes as well as similar nodes~[\ldots]. Furthermore, it allows filtering and selection of nodes based on their height and depicts filtered and unselected nodes in a clean way without introducing additional visual clutter}~\citep{limberger2018-filtering}.
 Depending on the renderer's capabilities and the already occupied visual variables, one of the various approaches for the visual display of the height reference can be applied, e.g., intersection, stilts, explicit surface, closed surface, and implicit surface. %
 Using user-induced aggregation (by means of folding and unfolding) in combination with an interactive height reference can provide a sufficient foundation for exploration-heavy tasks and map themes for single software maps and whole software map landscapes.
 
 \subsection{Using Natural Metaphors}
-\WrapFigRightRaised{figures/_vv-natural-metaphors}{Surface condition (rusty, shiny) as visual variable.}{fig:naturalmetaphors}
+\WrapFigRightRaised{figures/_vv-natural-metaphors}{Surface condition (rusty, shiny) as a visual variable.}{fig:naturalmetaphors}
 Natural metaphors are based on the idea that \enquote{when faced with unfamiliar concepts, our cognitive system searches for the best mapping between the unknown concept and existing knowledge of other domains}~\citep{zhang2008-metaphors}.
-To this end, natural metaphors, such as physical-based materials (e.g., rust, radiant emittance, roughness, and shininess; \autoref{fig:naturalmetaphors}) or weather phenomena (e.g., rain, clouds, fire, dust, snow) were suggested to \enquote{emotionalize the visual communication by providing memorable visualizations} \citep{wurfel2016-naturalphenomena}.
+To this end, natural metaphors, such as physically based materials (e.g., rust, radiant emittance, roughness, and shininess; \autoref{fig:naturalmetaphors}) or weather phenomena (e.g., rain, clouds, fire, dust, snow) were suggested to \enquote{emotionalize the visual communication by providing memorable visualizations} \citep{wurfel2016-naturalphenomena}.
 These metaphors can be used to depict change predictions or deviations from expected values on a secondary visual variable while considering knowledge or best practices on preattentive processing of, e.g., numerical information~\citep{few2004-tapping,hesse2017-preattentive}.
 However, weather phenomena require sophisticated rendering techniques, renderers, and an interactive context.
 Further, their use might be inappropriate in certain professional contexts and even distracting for the map theme.
@@ -608,7 +611,7 @@ The combined use of information visualization and visual cues with a claim to re
         \spy on ($(fig1.center)+(-20mm, +8mm)$) in node at ($(fig1.north)+(+16mm,-13mm)$);
     \end{tikzpicture}
     \caption{%
-        Two examples for complex software map assemblies: (a) aggregation and internal labeling \citep{limberger2017-aggregation}.
+        Two examples of complex software map assemblies: (a) aggregation and internal labeling \citep{limberger2017-aggregation}.
         The resulting space from aggregating nodes is used to embed labels into the software map. And (b) a semi-transparent information overlay to superimpose and emphasize additional information.}
     \label{fig:complex-examples}
 \end{figure*}
@@ -648,7 +651,7 @@ To summarize, we argue that the software map is a highly versatile tool in visua
 For future work, we foremost acknowledge the current state of evaluation for treemaps and software maps~\citep{fiedler2020-treemap-evaluation}.
 This motivates further evaluation of the proposed metaphors and techniques by means of user studies and studies in industry contexts.
 Further, we want to evaluate the applicability of the advanced metaphors and techniques to other 2D and 2.5D information visualization techniques.
-This includes visualization techniques from the classes of implicit edge representation trees and mapped trees for hierarchically-structured software data~\citep{scheibel2020-treemaptaxonomy} and topic maps for unstructured or otherwise-structured software data~\cite{atzberger2021-softwareforest}.
+This includes visualization techniques from the classes of implicit edge representation trees and mapped trees for hierarchically structured software data~\citep{scheibel2020-treemaptaxonomy} and topic maps for unstructured or otherwise-structured software data~\citep{atzberger2021-softwareforest}.
 
 \section*{Acknowledgments}
 We want to thank the anonymous reviewers for their valuable comments and suggestions to improve this article.
