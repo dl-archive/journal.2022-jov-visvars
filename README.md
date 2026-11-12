@@ -4,7 +4,7 @@
 
 *Journal of Visualization* 26(1). Springer Nature, 2022, pp. 249–274.
 
-DOI: [10.1007/s12650-022-00868-1](https://doi.org/10.1007/s12650-022-00868-1) (open access, CC BY 4.0) · Author's version: [Zenodo](https://doi.org/10.5281/zenodo.24121134)
+[![Version of record: 10.1007/s12650-022-00868-1](https://img.shields.io/badge/Version_of_record-10.1007%2Fs12650--022--00868--1-007ec6)](https://doi.org/10.1007/s12650-022-00868-1) [![Author's version: 10.5281/zenodo.24121134](https://img.shields.io/badge/Author%27s_version-10.5281%2Fzenodo.24121134-007ec6)](https://doi.org/10.5281/zenodo.24121134) · open access, CC BY 4.0
 
 > Software maps provide a general-purpose interactive user interface and information display in software analytics.
 > This paper classifies software maps as a containment-based treemap embedded into a 3D attribute space and introduces respective terminology.
